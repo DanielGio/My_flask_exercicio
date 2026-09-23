@@ -1,0 +1,115 @@
+{% extends "_base.html" %}
+
+{% block title %}
+Contacts
+{% endblock %}
+
+{% block content %}
+
+<h1 class="m-0 py-3">Entre em Contato</h1>
+
+<p>
+    Tem alguma dúvida, sugestão ou precisa de mais informações?
+    Entre em contato conosco!
+</p>
+
+<h2 class="m-0 py-3">Fale Conosco</h2>
+
+<p><strong>Telefone:</strong> (21) 1234-5678</p>
+<p><strong>WhatsApp:</strong> (11) 91234-5678</p>
+<p><strong>E-mail:</strong> contato@exemplosite.com.br</p>
+
+<h2 class="m-0 py-3">Horário de Atendimento</h2>
+
+<p>Segunda a sexta: 09:00 às 18:00</p>
+<p>Sábado: 09:00 às 13:00</p>
+
+<h2 class="m-0 py-3">Nossa Localização</h2>
+
+<p>
+    R. Mariano Procópio, nº 37<br>
+    Rio de Janeiro, Rio de Janeiro - RJ<br>
+    CEP: 20220-170
+</p>
+
+<h2 class="m-0 py-2">Deixe sua mensagem abaixo!</h2>
+
+<p>
+    Preencha os campos abaixo com seus dados e nos envie sua mensagem!
+</p>
+
+<div class="contact-form">
+
+    <form action="{{ url_for('contacts') }}" method="post">
+
+        <div class="my-3">
+            <label for="name" class="form-label">
+                Seu nome:
+            </label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Seu nome completo"
+                required
+            >
+        </div>
+
+        <div class="my-3">
+            <label for="email" class="form-label">
+                Seu e-mail:
+            </label>
+
+            <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Seu e-mail principal"
+                required
+            >
+        </div>
+
+        <div class="my-3">
+            <label for="subject" class="form-label">
+                Assunto:
+            </label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="subject"
+                name="subject"
+                placeholder="Assunto do contato"
+                required
+            >
+        </div>
+
+        <div class="my-3">
+            <label for="message" class="form-label">
+                Mensagem:
+            </label>
+
+            <textarea
+                name="message"
+                id="message"
+                rows="4"
+                class="form-control"
+                placeholder="Escreva sua mensagem"
+                required
+            ></textarea>
+        </div>
+
+        <div class="my-3">
+            <button type="submit" class="btn btn-primary">
+                Enviar
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}
