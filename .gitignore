@@ -3,6 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#mantém o .venv no PC e não sobre pro GITHUB
+.venv/
+__pycache__/
+*.pyc
+
 # C extensions
 *.so
 
