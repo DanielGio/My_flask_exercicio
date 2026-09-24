@@ -1,6 +1,15 @@
-from flask import Flask, render_template, request
+import sqlite3
+
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
+
+
+def get_db_connection():
+    connection = sqlite3.connect("database.db")
+    connection.row_factory = sqlite3.Row
+
+    return connection
 
 
 @app.route("/")
@@ -28,10 +37,23 @@ def contacts():
         subject = request.form["subject"]
         message = request.form["message"]
 
-        print("Nome:", name)
-        print("E-mail:", email)
-        print("Assunto:", subject)
-        print("Mensagem:", message)
+        connection = get_db_connection()
+
+        connection.execute(
+            """
+            INSERT INTO contact (
+                name,
+                email,
+                subject,
+                message
+            )
+            VALUES (?, ?, ?, ?)
+            """,
+            (name, email, subject, message)
+        )
+
+        connection.commit()
+        connection.close()
 
     return render_template("contacts.html")
 
